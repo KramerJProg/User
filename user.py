@@ -1,11 +1,10 @@
 class User:
     bank_name = "Bank of Kramer"
 
-    # Passing in 2 params : name and email_address
-    def __init__(self, name, email_address):
-        # 3 attributes that provide a name, email-address, and bank account balance.
+    # Passing in 1 params : name 
+    def __init__(self, name):
+        # 2 attributes that provide a name and bank account balance.
         self.name = name
-        self.email = email_address
         self.account_balance = 0
 
     # function that prints a message with a greeting of a specific instance.
@@ -24,10 +23,17 @@ class User:
     def display_user_balance(self):
         print(f"User: {self.name} , Balance: {self.account_balance}")
 
+    # function that transfers funds from one user's account to another user's account.
+    def transfer_money(self, amount, user):
+        self.account_balance -= amount
+        user.account_balance += amount
+        self.display_user_balance()
+        user.display_user_balance()
+
 # Instances with values passed in. Total of 3.
-kramer = User("Kramer", "Kramer@gmail.com")
-jessie = User("Jessie", "Jessie@gmail.com")
-jason = User("Jason", "Jason@outlook.com")
+kramer = User("Kramer")
+jessie = User("Jessie")
+jason = User("Jason")
 
 kramer.bank_name = "Credit Union of Kramer"
 
@@ -52,3 +58,5 @@ jason.make_withdrawl(10)
 kramer.display_user_balance()
 jessie.display_user_balance()
 jason.display_user_balance()
+
+kramer.transfer_money(5, jason)
