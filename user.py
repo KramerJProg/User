@@ -14,10 +14,12 @@ class User:
     # function that passes in 1 argument from the instance that adds funds to the bank account.
     def make_deposit(self, amount):
         self.account_balance += amount
+        return self
 
     # function that passes in 1 argument from the instance that subtracts funds to the bank account.
     def make_withdrawl(self, amount):
         self.account_balance -= amount
+        return self
 
     # function displays user's current account balance.
     def display_user_balance(self):
@@ -40,23 +42,11 @@ kramer.bank_name = "Credit Union of Kramer"
 print(kramer.bank_name)
 print(jessie.bank_name)
 
-kramer.make_deposit(20)
-kramer.make_deposit(20)
-kramer.make_deposit(20)
-kramer.make_withdrawl(5)
+kramer.make_deposit(20).make_deposit(20).make_deposit(20).make_withdrawl(5).transfer_money(5, jason)
 
-jessie.make_deposit(40)
-jessie.make_deposit(40)
-jessie.make_withdrawl(20)
-jessie.make_withdrawl(20)
+jessie.make_deposit(40).make_deposit(40).make_withdrawl(20).make_withdrawl(20)
 
-jason.make_deposit(400)
-jason.make_withdrawl(50)
-jason.make_withdrawl(20)
-jason.make_withdrawl(10)
+jason.make_deposit(400).make_withdrawl(50).make_withdrawl(20).make_withdrawl(10)
 
-kramer.display_user_balance()
 jessie.display_user_balance()
 jason.display_user_balance()
-
-kramer.transfer_money(5, jason)
